@@ -5,7 +5,7 @@ def convert_docx_to_txt(input_folder, output_folder):
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
     for filename in os.listdir(input_folder):
-        if filename.lower().endswith('.docx'):
+        if filename.lower().endswith('.docx') and not filename.startswith('~$'):
             docx_path = os.path.join(input_folder, filename)
             doc = Document(docx_path)
             text = "\n".join([para.text for para in doc.paragraphs])
